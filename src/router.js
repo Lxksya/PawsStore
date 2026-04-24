@@ -2,9 +2,12 @@
   getProductById,
   getState,
   resetProductUiState,
+  setAccordion,
   setCartQty,
+  setCurrentImageIndex,
   setFilterSort,
   setPriceRange,
+  toggleAccordion,
   toggleRatingFilter
 } from "./state/store.js";
 import { appEls } from "./ui/dom.js";
@@ -13,6 +16,13 @@ import { renderProductPage } from "./pages/productPage.js";
 import { renderCartPage } from "./pages/cartPage.js";
 import { closeOverlays, openMenu, renderShell, syncCartBadge } from "./ui/shell.js";
 import { showToast } from "./ui/toast.js";
+
+function getProductIdFromHash() {
+  if (!window.location.hash.startsWith("#/product/")) {
+    return null;
+  }
+  return window.location.hash.split("/")[2];
+}
 
 function renderRoute() {
   const hash = window.location.hash || "#/catalog";
@@ -23,7 +33,7 @@ function renderRoute() {
   }
 
   if (hash.startsWith("#/product/")) {
-    const productId = hash.split("/")[2];
+    const productId = getProductIdFromHash();
     const product = getProductById(productId);
 
     if (!product) {
@@ -69,12 +79,26 @@ function addProductToCart(productId) {
   renderRoute();
 }
 
+function updateQuantity(productId, delta) {
+  const currentQty = getState().cart[productId] || 1;
+  const nextQty = Math.max(currentQty + delta, 0);
+  setCartQty(productId, nextQty);
+  syncCartBadge();
+  renderRoute();
+}
+
 function onClick(event) {
   const menuOpen = event.target.closest("#menuOpen");
   const menuClose = event.target.closest("#menuClose");
   const addButton = event.target.closest('[data-action="add-product"]');
   const openFiltersButton = event.target.closest('[data-action="open-filters"]');
   const closeFiltersButton = event.target.closest('[data-action="close-filters"]');
+  const plusButton = event.target.closest('[data-action="qty-plus"]');
+  const minusButton = event.target.closest('[data-action="qty-minus"]');
+  const setImageButton = event.target.closest('[data-action="set-image"]');
+  const imagePrevButton = event.target.closest('[data-action="image-prev"]');
+  const imageNextButton = event.target.closest('[data-action="image-next"]');
+  const toggleAccordionButton = event.target.closest('[data-action="toggle-accordion"]');
 
   if (menuOpen) {
     openMenu();
@@ -88,6 +112,43 @@ function onClick(event) {
 
   if (addButton) {
     addProductToCart(addButton.dataset.id);
+    return;
+  }
+
+  if (plusButton) {
+    updateQuantity(plusButton.dataset.id, 1);
+    return;
+  }
+
+  if (minusButton) {
+    updateQuantity(minusButton.dataset.id, -1);
+    return;
+  }
+
+  if (setImageButton) {
+    setCurrentImageIndex(Number(setImageButton.dataset.index));
+    renderRoute();
+    return;
+  }
+
+  if (imagePrevButton || imageNextButton) {
+    const productId = getProductIdFromHash();
+    const product = getProductById(productId);
+    if (!product) return;
+
+    const currentIndex = getState().ui.currentImageIndex;
+    const total = product.images.length;
+    const nextIndex = imagePrevButton ? (currentIndex - 1 + total) % total : (currentIndex + 1) % total;
+
+    setCurrentImageIndex(nextIndex);
+    renderRoute();
+    return;
+  }
+
+  if (toggleAccordionButton) {
+    const section = toggleAccordionButton.dataset.section;
+    toggleAccordion(section);
+    renderRoute();
     return;
   }
 
@@ -131,6 +192,9 @@ function onInput(event) {
 function onHashChange() {
   if (window.location.hash.startsWith("#/product/")) {
     resetProductUiState();
+  } else {
+    setAccordion("specs", true);
+    setAccordion("description", false);
   }
   closeOverlays();
   renderRoute();
