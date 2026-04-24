@@ -31,6 +31,36 @@ export function getProducts() {
   return PRODUCTS;
 }
 
+export function getFilteredProducts() {
+  let list = [...PRODUCTS];
+
+  const min = Number(state.filters.minPrice || 0);
+  const max = Number(state.filters.maxPrice || Number.POSITIVE_INFINITY);
+
+  list = list.filter((item) => item.price >= min && item.price <= max);
+
+  if (state.filters.ratings.size > 0) {
+    list = list.filter((item) => {
+      for (const minRating of state.filters.ratings) {
+        if (item.rating >= minRating) {
+          return true;
+        }
+      }
+      return false;
+    });
+  }
+
+  list.sort((a, b) => {
+    if (state.filters.sort === "name-asc") return a.name.localeCompare(b.name);
+    if (state.filters.sort === "name-desc") return b.name.localeCompare(a.name);
+    if (state.filters.sort === "price-asc") return a.price - b.price;
+    if (state.filters.sort === "price-desc") return b.price - a.price;
+    return 0;
+  });
+
+  return list;
+}
+
 export function getProductById(id) {
   return PRODUCTS.find((item) => item.id === id);
 }
@@ -87,12 +117,29 @@ export function getCartItems() {
     .filter(Boolean);
 }
 
+export function clearFilters() {
+  state.filters.ratings.clear();
+  state.filters.minPrice = "";
+  state.filters.maxPrice = "";
+  state.filters.sort = "name-asc";
+}
+
 export function setCurrentImageIndex(index) {
   state.ui.currentImageIndex = index;
 }
 
 export function toggleAccordion(section) {
   state.ui.openAccordions[section] = !state.ui.openAccordions[section];
+}
+
+export function setAccordion(section, open) {
+  state.ui.openAccordions[section] = open;
+}
+
+export function resetProductUiState() {
+  state.ui.currentImageIndex = 0;
+  setAccordion("specs", true);
+  setAccordion("description", false);
 }
 
 function loadCart() {
