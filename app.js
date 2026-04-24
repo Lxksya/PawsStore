@@ -415,6 +415,15 @@ function renderCartPage() {
         <h1>Shopping Bag</h1>
         <p>${items.length} item${items.length > 1 ? "s" : ""} ready for checkout</p>
       </div>
+      <div class="cart-steps">
+        <span class="active">1 Cart</span>
+        <span>2 Checkout</span>
+        <span>3 Complete</span>
+      </div>
+      <div class="shipping-banner">
+        <span>🏷 Free shipping on orders over <strong>$50</strong></span>
+        <strong class="ok">✔ Qualified!</strong>
+      </div>
 
       <div class="cart-layout">
         <section class="cart-list">
@@ -477,14 +486,17 @@ function renderCartRow(item) {
 function onGlobalClick(event) {
   const target = event.target.closest("[data-action], #menuOpen, #menuClose");
   if (!target) return;
+  const backdrop = document.getElementById("globalBackdrop");
 
   if (target.id === "menuOpen") {
     document.getElementById("mobileMenu").classList.add("open");
+    backdrop.hidden = false;
     return;
   }
 
   if (target.id === "menuClose") {
     document.getElementById("mobileMenu").classList.remove("open");
+    backdrop.hidden = true;
     return;
   }
 
@@ -514,10 +526,12 @@ function onGlobalClick(event) {
 
   if (action === "open-mobile-filters") {
     document.getElementById("filterPanel")?.classList.add("open");
+    backdrop.hidden = false;
   }
 
   if (action === "close-mobile-filters") {
     document.getElementById("filterPanel")?.classList.remove("open");
+    backdrop.hidden = true;
   }
 
   if (action === "thumb") {
@@ -540,6 +554,12 @@ function onGlobalClick(event) {
     target.setAttribute("aria-expanded", String(open));
   }
 }
+
+document.getElementById("globalBackdrop").addEventListener("click", () => {
+  document.getElementById("mobileMenu").classList.remove("open");
+  document.getElementById("filterPanel")?.classList.remove("open");
+  document.getElementById("globalBackdrop").hidden = true;
+});
 
 function onGlobalInput(event) {
   if (event.target.id === "sortSelect") {
