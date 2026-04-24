@@ -1,0 +1,40 @@
+﻿<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PawsStore | Интернет-магазин</title>
+    <meta
+      name="description"
+      content="PawsStore — интернет-магазин товаров для питомцев: каталог, карточка товара и корзина."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header" id="siteHeader"></header>
+      <main id="app" class="page-root" aria-live="polite"></main>
+      <footer class="site-footer" id="siteFooter"></footer>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <button class="menu-close" id="menuClose" aria-label="Закрыть меню">✕</button>
+      <nav class="mobile-nav">
+        <a href="#/catalog">Shop</a>
+        <a href="#/catalog">Categories</a>
+        <a href="#/catalog">Deals</a>
+        <a href="#/about">About</a>
+      </nav>
+    </div>
+
+    <div class="toast-wrap" id="toastWrap" aria-live="assertive" aria-atomic="true"></div>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
