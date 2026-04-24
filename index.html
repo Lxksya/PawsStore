@@ -3,12 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PawsStore</title>
+    <title>PawsStore | Интернет-магазин</title>
+    <meta name="description" content="PawsStore — интернет-магазин товаров для питомцев" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/styles/base.css" />
+    <link rel="stylesheet" href="./src/styles/layout.css" />
+    <link rel="stylesheet" href="./src/styles/components.css" />
+    <link rel="stylesheet" href="./src/styles/pages.css" />
+    <link rel="stylesheet" href="./src/styles/responsive.css" />
   </head>
   <body>
-    <header id="siteHeader"></header>
-    <main id="app"></main>
-    <footer id="siteFooter"></footer>
+    <div class="app-shell">
+      <header id="siteHeader" class="site-header"></header>
+      <main id="app" class="page-root" aria-live="polite"></main>
+      <footer id="siteFooter" class="site-footer"></footer>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu" aria-hidden="true"></div>
+    <div id="backdrop" class="backdrop" hidden></div>
+    <div id="toastWrap" class="toast-wrap" aria-live="assertive" aria-atomic="true"></div>
+
     <script type="module" src="./src/main.js"></script>
   </body>
 </html>
