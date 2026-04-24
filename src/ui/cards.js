@@ -10,13 +10,20 @@ export function renderCatalogCard(product) {
         <img src="${product.images[0]}" alt="${product.name}" loading="lazy" />
         <span class="price-pill">${formatPrice(product.price)}</span>
       </a>
+      <div class="product-hover-panel">
+        <a class="product-name hover-name" href="#/product/${product.id}">${product.name}</a>
+        <div class="rating-line">${renderStars(product.rating)} <small>(${product.reviews})</small></div>
+        <div class="hover-actions">
+          <strong>${formatPrice(product.price)}</strong>
+          <button class="card-add-btn" data-action="add-product" data-id="${product.id}" aria-label="Добавить товар в корзину">
+            ${inCart ? "✓" : "🛒"}
+          </button>
+        </div>
+      </div>
       <div class="product-card-content">
         <a class="product-name" href="#/product/${product.id}">${product.name}</a>
         <div class="rating-line">${renderStars(product.rating)} <small>(${product.reviews})</small></div>
       </div>
-      <button class="card-add-btn" data-action="add-product" data-id="${product.id}" aria-label="Добавить товар в корзину">
-        ${inCart ? "✓" : "🛒"}
-      </button>
       <div class="card-bottom-muted">
         <span>${product.name}</span>
         <div class="rating-line">${renderStars(product.rating)} <small>(${product.reviews})</small></div>
