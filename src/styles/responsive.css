@@ -41,6 +41,14 @@
     grid-template-columns: 1fr;
   }
 
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-steps {
+    flex-wrap: wrap;
+  }
+
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -74,6 +82,23 @@
 
   .spec-grid {
     grid-template-columns: 1fr;
+  }
+
+  .cart-row {
+    grid-template-columns: 58px 1fr auto;
+    align-items: start;
+  }
+
+  .cart-row img {
+    width: 58px;
+    height: 58px;
+  }
+
+  .cart-row .qty-control,
+  .cart-row .cart-prices {
+    grid-column: 2 / 4;
+    justify-self: start;
+    margin-top: 0.4rem;
   }
 
   .footer-grid {

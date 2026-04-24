@@ -7,6 +7,7 @@
   setCurrentImageIndex,
   setFilterSort,
   setPriceRange,
+  setPromoCode,
   toggleAccordion,
   toggleRatingFilter
 } from "./state/store.js";
@@ -79,6 +80,16 @@ function addProductToCart(productId) {
   renderRoute();
 }
 
+function removeProductFromCart(productId) {
+  const product = getProductById(productId);
+  setCartQty(productId, 0);
+  if (product) {
+    showToast(`${product.name} removed from cart`);
+  }
+  syncCartBadge();
+  renderRoute();
+}
+
 function updateQuantity(productId, delta) {
   const currentQty = getState().cart[productId] || 1;
   const nextQty = Math.max(currentQty + delta, 0);
@@ -95,6 +106,7 @@ function onClick(event) {
   const closeFiltersButton = event.target.closest('[data-action="close-filters"]');
   const plusButton = event.target.closest('[data-action="qty-plus"]');
   const minusButton = event.target.closest('[data-action="qty-minus"]');
+  const removeButton = event.target.closest('[data-action="remove-item"]');
   const setImageButton = event.target.closest('[data-action="set-image"]');
   const imagePrevButton = event.target.closest('[data-action="image-prev"]');
   const imageNextButton = event.target.closest('[data-action="image-next"]');
@@ -122,6 +134,11 @@ function onClick(event) {
 
   if (minusButton) {
     updateQuantity(minusButton.dataset.id, -1);
+    return;
+  }
+
+  if (removeButton) {
+    removeProductFromCart(removeButton.dataset.id);
     return;
   }
 
@@ -189,6 +206,34 @@ function onInput(event) {
   }
 }
 
+function onSubmit(event) {
+  const promoForm = event.target.closest("#promoForm");
+  if (!promoForm) return;
+
+  event.preventDefault();
+  const promoInput = document.getElementById("promoInput");
+  const promoMessage = document.getElementById("promoMessage");
+  const value = promoInput?.value.trim().toUpperCase() || "";
+
+  if (!value) {
+    promoMessage.textContent = "Введите промокод";
+    promoMessage.className = "promo-message error";
+    return;
+  }
+
+  if (value !== "SAVE10") {
+    setPromoCode("");
+    promoMessage.textContent = "Неверный промокод";
+    promoMessage.className = "promo-message error";
+    return;
+  }
+
+  setPromoCode("SAVE10");
+  promoMessage.textContent = "Промокод применен: скидка 10%";
+  promoMessage.className = "promo-message success";
+  renderRoute();
+}
+
 function onHashChange() {
   if (window.location.hash.startsWith("#/product/")) {
     resetProductUiState();
@@ -210,6 +255,7 @@ export function initApp() {
   window.addEventListener("hashchange", onHashChange);
   window.addEventListener("click", onClick);
   window.addEventListener("input", onInput);
+  window.addEventListener("submit", onSubmit);
   appEls.backdrop.addEventListener("click", closeOverlays);
 
   syncCartBadge();
