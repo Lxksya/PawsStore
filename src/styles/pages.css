@@ -26,6 +26,8 @@
   border-radius: var(--radius);
   padding: 1rem;
   height: fit-content;
+  position: sticky;
+  top: 92px;
 }
 
 .filters-header {
@@ -53,8 +55,9 @@
 
 .price-inputs {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 0.5rem;
+  width: 100%;
 }
 
 .price-inputs label {
@@ -62,11 +65,14 @@
   gap: 0.25rem;
   font-size: 0.78rem;
   color: #6b7280;
+  min-width: 0;
 }
 
 .price-inputs input,
 .sort-select select,
 .promo-form input {
+  width: 100%;
+  min-width: 0;
   min-height: 34px;
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -134,6 +140,15 @@
   position: relative;
 }
 
+.product-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 18, 36, 0.24);
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+
 .product-media img {
   width: 100%;
   height: 100%;
@@ -146,6 +161,10 @@
   filter: saturate(0.97) contrast(1.03);
 }
 
+.product-card:hover .product-media::after {
+  opacity: 1;
+}
+
 .price-pill {
   position: absolute;
   top: 10px;
@@ -156,6 +175,7 @@
   font-weight: 700;
   padding: 0.4rem 0.7rem;
   z-index: 2;
+  transition: opacity 220ms ease, transform 220ms ease;
 }
 
 .product-card-content {
@@ -211,11 +231,17 @@
   pointer-events: auto;
 }
 
+.product-card:hover .price-pill,
+.product-card:focus-within .price-pill {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
 .hover-name {
   display: inline-block;
   margin-bottom: 0.4rem;
-  font-size: 2.05rem;
-  line-height: 1.35;
+  font-size: 1.95rem;
+  line-height: 1.25;
 }
 
 .hover-actions {
@@ -227,7 +253,7 @@
 
 .hover-actions strong {
   color: var(--brand-a);
-  font-size: 1.95rem;
+  font-size: 1.8rem;
 }
 
 .card-bottom-muted {
@@ -585,6 +611,11 @@
   margin-inline: 0.8rem;
 }
 
+.order-summary .btn.full {
+  width: calc(100% - 1.6rem);
+  border-radius: 12px;
+}
+
 .promo-form {
   margin-top: 0.8rem;
 }
@@ -663,6 +694,11 @@
   place-content: center;
   text-align: center;
   gap: 0.75rem;
+}
+
+.empty-cart-page .btn {
+  margin: 0 auto;
+  min-width: 170px;
 }
 
 .empty-icon {

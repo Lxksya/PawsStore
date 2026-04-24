@@ -13,13 +13,13 @@ export function renderProductPage(product) {
       <nav class="crumbs"><a href="#/catalog">Home</a> › <a href="#/catalog">${product.category}</a> › ${product.name}</nav>
       <div class="product-layout">
         <div class="product-gallery-box">
-          <img class="product-main-image" src="${activeImage}" alt="${product.name}" />
+          <img class="product-main-image" src="${activeImage}" alt="${product.name}" onerror="this.onerror=null;this.src='./src/assets/products/fallback.svg';" />
           <div class="thumb-row">
             ${product.images
               .map(
                 (img, index) => `
                   <button class="thumb ${index === imageIndex ? "active" : ""}" data-action="set-image" data-index="${index}">
-                    <img src="${img}" alt="${product.name} ${index + 1}" />
+                    <img src="${img}" alt="${product.name} ${index + 1}" onerror="this.onerror=null;this.src='./src/assets/products/fallback.svg';" />
                   </button>`
               )
               .join("")}

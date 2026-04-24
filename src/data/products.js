@@ -24,9 +24,9 @@
       ["Features", "Collapsible, Padded Strap"]
     ],
     images: [
-      "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1472491235688-bdc81a63246e?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=1200&q=80"
+      "https://images.pexels.com/photos/8473661/pexels-photo-8473661.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.pexels.com/photos/8473657/pexels-photo-8473657.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.pexels.com/photos/10875389/pexels-photo-10875389.jpeg?auto=compress&cs=tinysrgb&w=1200"
     ]
   },
   {
@@ -42,9 +42,9 @@
     highlights: ["Safe Rubber", "Textured Surface", "Long Lasting"],
     specs: [["Size", "Medium"], ["Material", "Natural Rubber"], ["Use", "Indoor/Outdoor"]],
     images: [
-      "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1560743641-3914f2c45636?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1601758003122-53c40e686a19?auto=format&fit=crop&w=1200&q=80"
+      "https://images.pexels.com/photos/16362983/pexels-photo-16362983.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.pexels.com/photos/15645050/pexels-photo-15645050.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.pexels.com/photos/7017669/pexels-photo-7017669.jpeg?auto=compress&cs=tinysrgb&w=1200"
     ]
   },
   {
@@ -60,9 +60,9 @@
     highlights: ["Sisal Rope", "Stable Base", "Compact Footprint"],
     specs: [["Height", "34 in"], ["Material", "Sisal & Plush"], ["Assembly", "10 min"]],
     images: [
-      "https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1511044568932-338cba0ad803?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=1200&q=80"
+      "https://images.pexels.com/photos/15487957/pexels-photo-15487957.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.pexels.com/photos/18065242/pexels-photo-18065242.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.pexels.com/photos/18237393/pexels-photo-18237393.jpeg?auto=compress&cs=tinysrgb&w=1200"
     ]
   },
   {
@@ -78,9 +78,9 @@
     highlights: ["Memory Foam", "Washable Cover", "Anti-Slip Base"],
     specs: [["Size", "L"], ["Color", "Slate"], ["Care", "Machine Wash"]],
     images: [
-      "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1597633125097-5a9961e1f6e5?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=1200&q=80"
+      "https://images.pexels.com/photos/11229673/pexels-photo-11229673.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.pexels.com/photos/9598298/pexels-photo-9598298.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.pexels.com/photos/10418616/pexels-photo-10418616.jpeg?auto=compress&cs=tinysrgb&w=1200"
     ]
   },
   {
@@ -96,9 +96,9 @@
     highlights: ["Non-Slip Base", "Stainless Steel", "Dishwasher Safe"],
     specs: [["Capacity", "1.2 L"], ["Material", "304 Steel"], ["Base", "Rubberized"]],
     images: [
-      "https://images.unsplash.com/photo-1583512603782-9a5f6f2d93e9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1601758177266-bc599de87707?auto=format&fit=crop&w=1200&q=80"
+      "https://images.pexels.com/photos/8434725/pexels-photo-8434725.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.pexels.com/photos/5482828/pexels-photo-5482828.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.pexels.com/photos/8473520/pexels-photo-8473520.jpeg?auto=compress&cs=tinysrgb&w=1200"
     ]
   },
   {
@@ -114,9 +114,9 @@
     highlights: ["Reflective Stitching", "Heavy Duty Clasp", "Adjustable Collar"],
     specs: [["Leash", "1.5 m"], ["Collar", "S-M Adjustable"], ["Material", "Nylon"]],
     images: [
-      "https://images.unsplash.com/photo-1583337130417-3346a1f7dee7?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&w=1200&q=80"
+      "https://images.pexels.com/photos/5138263/pexels-photo-5138263.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.pexels.com/photos/18039300/pexels-photo-18039300.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.pexels.com/photos/13867949/pexels-photo-13867949.jpeg?auto=compress&cs=tinysrgb&w=1200"
     ]
   }
 ];

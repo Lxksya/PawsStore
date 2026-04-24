@@ -7,7 +7,7 @@ export function renderCatalogCard(product) {
   return `
     <article class="product-card" data-id="${product.id}">
       <a class="product-media" href="#/product/${product.id}">
-        <img src="${product.images[0]}" alt="${product.name}" loading="lazy" />
+        <img src="${product.images[0]}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='./src/assets/products/fallback.svg';" />
         <span class="price-pill">${formatPrice(product.price)}</span>
       </a>
       <div class="product-hover-panel">

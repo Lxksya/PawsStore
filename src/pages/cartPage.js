@@ -6,7 +6,7 @@ function renderCartRow(item) {
 
   return `
     <article class="cart-row">
-      <img src="${item.images[0]}" alt="${item.name}" />
+      <img src="${item.images[0]}" alt="${item.name}" onerror="this.onerror=null;this.src='./src/assets/products/fallback.svg';" />
       <div>
         <h3>${item.name}</h3>
         <p>${item.subtitle}</p>
