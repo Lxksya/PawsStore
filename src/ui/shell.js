@@ -1,4 +1,5 @@
-﻿import { appEls } from "./dom.js";
+﻿import { getCartCount } from "../state/store.js";
+import { appEls } from "./dom.js";
 
 export function renderShell() {
   appEls.header.innerHTML = `
@@ -17,7 +18,7 @@ export function renderShell() {
         <button type="button" class="icon-btn" aria-label="Поиск">⌕</button>
         <a href="#/cart" class="icon-btn cart-link" aria-label="Корзина">
           🛒
-          <span id="cartBadge" class="badge" style="display: none;">0</span>
+          <span id="cartBadge" class="badge">0</span>
         </a>
         <button id="menuOpen" class="icon-btn menu-btn" type="button" aria-label="Открыть меню">☰</button>
       </div>
@@ -70,4 +71,25 @@ export function renderShell() {
       <a href="#/cart">Cart</a>
     </nav>
   `;
+
+  syncCartBadge();
+}
+
+export function syncCartBadge() {
+  const badge = document.getElementById("cartBadge");
+  if (!badge) return;
+  const count = getCartCount();
+  badge.textContent = String(count);
+  badge.style.display = count ? "inline-flex" : "none";
+}
+
+export function openMenu() {
+  appEls.mobileMenu.classList.add("open");
+  appEls.backdrop.hidden = false;
+}
+
+export function closeOverlays() {
+  appEls.mobileMenu.classList.remove("open");
+  document.getElementById("catalogFilters")?.classList.remove("open");
+  appEls.backdrop.hidden = true;
 }
