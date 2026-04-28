@@ -1,4 +1,4 @@
-﻿import {
+import {
   getProductById,
   getState,
   resetProductUiState,
@@ -91,7 +91,7 @@ function removeProductFromCart(productId) {
 }
 
 function updateQuantity(productId, delta) {
-  const currentQty = getState().cart[productId] || 1;
+  const currentQty = getState().cart[productId] ?? 0;
   const nextQty = Math.max(currentQty + delta, 0);
   setCartQty(productId, nextQty);
   syncCartBadge();

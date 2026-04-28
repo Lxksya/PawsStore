@@ -1,4 +1,4 @@
-﻿# PawsStore
+# PawsStore
 
 Полностью переписанный проект интернет-магазина по ТЗ с поэтапной историей коммитов.
 
@@ -82,6 +82,11 @@ python -m http.server 5173
 - Framework Preset: `Other`
 - Build command: пусто
 - Output directory: `.`
+
+## Материалы для защиты
+
+- [`EXAM_PREP.md`](./EXAM_PREP.md) — конспект: архитектура, таблицы, вопросы–ответы, каверзные темы
+- [`CHEATSHEET_ONEPAGE.md`](./CHEATSHEET_ONEPAGE.md) — шпаргалка на одну страницу
 
 ## Git-процесс
 

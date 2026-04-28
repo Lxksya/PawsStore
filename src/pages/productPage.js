@@ -1,11 +1,11 @@
-﻿import { getCartQty, getState } from "../state/store.js";
+import { getCartQty, getState } from "../state/store.js";
 import { formatPrice, renderStars } from "../utils/format.js";
 
 export function renderProductPage(product) {
   const state = getState();
   const imageIndex = state.ui.currentImageIndex;
   const activeImage = product.images[imageIndex] || product.images[0];
-  const qty = Math.max(getCartQty(product.id), 1);
+  const qty = getCartQty(product.id);
   const isInCart = getCartQty(product.id) > 0;
 
   return `
